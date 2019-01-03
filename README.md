@@ -12,4 +12,20 @@ However, things turned out to be harder than I expected. Using the [BizHawk emul
 
 I still needed a way to simulate key presses to trigger OBS, which I couldn't do via the emulator script. So, I set up a [Node.js](https://nodejs.org/) server to run locally on my machine, using [RobotJS](http://robotjs.io/) to simulate the key presses. That way, the Lua script could send an HTTP request to the local server, which would then simulate the key presses and trigger OBS, that would in turn save the screen recording.
 
-<!-- TODO: Add tutorial on how to use -->
+
+## How to use
+
+Using this setup is a piece of cake.
+
+### Setting up the Lua script
+
+To use the Lua script, open BizHawk and open the game ROM (how to get a ROM is outside the the scope of this article). Click on "Tools" -> "Lua Console". Then, on the window that opens, click on "Script" -> "Open Script" and select the `barney.lua` file.
+
+Make sure the script is activated. You can check that it is if the window has "1 script (1 active, 0 paused)" written over the script list. If it is **not** activated, either double click it or select it and then click the "Toggle script" button.
+
+In case you make any changes while the script is running, remember to select the script and click the "Reload script" button. Keep in mind that reloading the script will erase any potential variable values from a previous script execution, so it's best to only do it if the variables are in a reset state (i.e. after a run is over, while the script waits for a new run to begin).
+
+<!-- TODO:
+### Setting up the Node.js server
+   (I'll write this later today)
+-->
