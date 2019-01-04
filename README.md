@@ -1,5 +1,15 @@
 # Automated Barney's Hide & Seek Game Any% No Controller Speedrun Setup
 
+## Table of Contents
+1. [Context](#context)
+2. [How to use](#how-to-use)
+    - [Setting up the Lua script](#lua)
+    - [Setting up the Node.js server](#node)
+    - [Setting up OBS Studio](#obs)
+    - [Starting everything](#starting)
+3. [Results](#results)
+
+<a name="context"></a>
 ## Context
 
 There's a category of speedrunning for the 1993 game [Barney's Hide & Seek](https://en.wikipedia.org/wiki/Barney's_Hide_%26_Seek_Game) called [Any% No Controller](https://www.speedrun.com/Barneys_Hide_and_Seek_Game#Any_No_Controller). In this run, you cannot touch the controller, and must instead let Barney himself finish the game (which he will inevitably do). The game resets itself once it reaches the credits, so Barney will continue completing the game for eternity if the game isn't turned off.
@@ -12,20 +22,44 @@ However, things turned out to be harder than I expected. Using the [BizHawk emul
 
 I still needed a way to simulate key presses to trigger OBS, which I couldn't do via the emulator script. So, I set up a [Node.js](https://nodejs.org/) server to run locally on my machine, using [RobotJS](http://robotjs.io/) to simulate the key presses. That way, the Lua script could send an HTTP request to the local server, which would then simulate the key presses and trigger OBS, that would in turn save the screen recording.
 
-
+<a name="how-to-use"></a>
 ## How to use
 
-Using this setup is a piece of cake.
-
+<a name="lua"></a>
 ### Setting up the Lua script
 
-To use the Lua script, open BizHawk and open the game ROM (how to get a ROM is outside the the scope of this article). Click on "Tools" -> "Lua Console". Then, on the window that opens, click on "Script" -> "Open Script" and select the `barney.lua` file.
+To use the Lua script, open BizHawk and open the game ROM (how to get a ROM is outside the the scope of this article). Make sure you click "Emulation" -> "Pause" after opening the game. After that, click on "Tools" -> "Lua Console". Then, on the window that opens, click on "Script" -> "Open Script" and select the `barney.lua` file.
 
 Make sure the script is activated. You can check that it is if the window has "1 script (1 active, 0 paused)" written over the script list. If it is **not** activated, either double click it or select it and then click the "Toggle script" button.
 
 In case you make any changes while the script is running, remember to select the script and click the "Reload script" button. Keep in mind that reloading the script will erase any potential variable values from a previous script execution, so it's best to only do it if the variables are in a reset state (i.e. after a run is over, while the script waits for a new run to begin).
 
-<!-- TODO:
+<a name="node"></a>
 ### Setting up the Node.js server
-   (I'll write this later today)
--->
+
+Copy the `server` folder and enter it. Then, run the command `npm install`. That'll install the dependencies required for the project.
+
+Note: In case you get any errors about missing "VSBuild.exe", try running `npm install -g --production windows-build-tools`.
+
+<a name="obs"></a>
+### Setting up OBS Studio
+
+First, adjust the preview to match what you'd like to record of your screen. You'll obviously want the emulator window to show up on the video, so make sure to set it up accordingly.
+
+Now, click "File" -> "Settings", then "Output" on the sidebar. At "Replay Buffer", change "Maximum Replay Time (Seconds)" to something like 590 seconds (~9min 50s), which is enough time for the recording to save the entire Barney run. You can adjust under "Recording" the format and folder it'll save the file to.
+
+Then, click on "Hotkeys" on the sidebar and, under "Replay Buffer", set up the "Save Replay" key combination. Set it to your preference, but remember to update it on `main.js` so that the Node server actually presses the right keys. You're done! You may now click "Ok" to close the settings window.
+
+<a name="starting"></a>
+### Starting everything
+
+When you're ready to start recording, click on the "Start Replay Buffer" button under "Controls" on the bottom right of the OBS window. Then, start the Node local server by running `node .` inside the server directory. Lastly, don't forget to check if the Lua script is activated. You can now unpause the game ("Emulation" -> "Pause" on the emulator window) and let it play itself!
+
+<a name="results"></a>
+## Results
+
+After letting this run for over 24 hours, and after over 200 attempts, Barney simply wasn't able to get any lower than 9:19.633… (according to the frame count, assuming 60fps; real time might differ slightly).
+
+This could potentially be an issue with the ROM but, as some have previously reported, it might be a case that only an actual Sega Genesis console can get the elusive 9:09 time. Now, I couldn't possibly tell you *why* that is, but my results seem to align with the idea. This experiment isn't definitive proof of anything, really, but it's good enough for me. I'll settle with a (literal) 50-way tie on 4th place and leave this be. You can watch the 9:19 run I picked for submission [on YouTube](https://youtu.be/FOvqiIQgPLQ).
+
+If you've made it all the way down here, congratulations! I didn't expect anyone to read through all of this, considering it's a Barney game from over 25 years ago. Still, it was a lot of fun to experiment with this and, if you've got another game that plays itself and you'd like to auto-record, hopefully this is helpful to you in some way or another. Cheers!
