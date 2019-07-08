@@ -1,5 +1,7 @@
 # Automated Barney's Hide & Seek Game Any% No Controller Speedrun Setup
 
+![screenshot of my](https://i.imgur.com/jMsGNDs.png)
+
 ## Table of Contents
 1. [Context](#context)
 2. [How to use](#how-to-use)
@@ -60,6 +62,6 @@ When you're ready to start recording, click on the "Start Replay Buffer" button 
 
 After letting this run for over 24 hours, and after over 200 attempts, Barney simply wasn't able to get any lower than 9:19.633… (according to the frame count, assuming 60fps; real time might differ slightly).
 
-This could potentially be an issue with the ROM but, as some have previously reported, it might be a case that only an actual Sega Genesis console can get the elusive 9:09 time. Now, I couldn't possibly tell you *why* that is, but my results seem to align with the idea. This experiment isn't definitive proof of anything, really, but it's good enough for me. I'll settle with a (literal) 50-way tie on 4th place and leave this be. You can watch the 9:19 run I picked for submission [on YouTube](https://youtu.be/FOvqiIQgPLQ).
+This could potentially be an issue with the ROM but, as some have previously reported, it might be a case that only an actual Sega Genesis console can get the elusive 9:09 time. Now, I couldn't possibly tell you *why* that is, but my results seem to align with the idea. This experiment isn't definitive proof of anything, really, but it's good enough for me. I'll settle with a (literal) 60+ way tie on 8+th place and leave this be. You can watch the 9:19 run I picked for submission [on YouTube](https://youtu.be/FOvqiIQgPLQ), or check it [on Speedrun.com](https://www.speedrun.com/Barneys_Hide_and_Seek_Game/run/zx4w0dqy).
 
-If you've made it all the way down here, congratulations! I didn't expect anyone to read through all of this, considering it's a Barney game from over 25 years ago. Still, it was a lot of fun to experiment with this and, if you've got another game that plays itself and you'd like to auto-record, hopefully this is helpful to you in some way or another. Cheers!
+If you've made it all the way down here, congratulations! I didn't expect anyone to read through all of this, considering it's a Barney game from over 25 years ago. Still, it was a lot of fun to experiment with this and, if you've got another game that plays itself and that you'd like to auto-record, hopefully this'll be helpful to you in some way or another. Cheers!
